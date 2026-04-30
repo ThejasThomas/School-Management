@@ -1,6 +1,6 @@
 📘 Student Management System
 
-A full-stack School Management System built using the MERN stack that enables administrators and teachers to efficiently manage students, classes, attendance and teachers.
+A full-stack School Management System built using the MERN stack that enables administrators and teachers to efficiently manage students, classes, attendance and subjects.
 
 🚀 Features
 👨‍💼 Admin
