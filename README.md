@@ -44,7 +44,7 @@ JWT Authentication
 bcryptjs
 
 
-🧠 Key Highlights (For Recruiters)
+🧠 Key Highlights
 ✅ Scalable modular backend architecture
 ✅ Role-based authentication system
 ✅ Real-world workflow (admin approval system)
