@@ -1,20 +1,31 @@
-import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
-const Dashboard = () => {
-  const { logout } = useAuth();
+import AttendanceForm from "../components/attendance/AttendanceForm";
+import TeacherLayout from "../layout/TeacherLayout";
+import AttendanceHistory from "../components/attendance/AttendenceHistory";
+import AttendanceStats from "../components/attendance/attendanceStats";
+
+const TeacherDashboard = () => {
+  const [section, setSection] = useState("dashboard");
+
+  const renderContent = () => {
+    switch (section) {
+      case "attendance":
+        return <AttendanceForm />;
+
+      case "history":
+        return <AttendanceHistory />;
+
+      default:
+        return <AttendanceStats />;
+    }
+  };
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold">Dashboard</h1>
-
-      <button
-        onClick={logout}
-        className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-      >
-        Logout
-      </button>
-    </div>
+    <TeacherLayout onSelect={setSection}>
+      {renderContent()}
+    </TeacherLayout>
   );
 };
 
-export default Dashboard;
+export default TeacherDashboard;
