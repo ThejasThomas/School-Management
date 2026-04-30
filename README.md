@@ -64,7 +64,7 @@ Database: MongoDB Atlas
 
 👨‍💻 Author
 
-Tejas Thomas
+Thejas Thomas
 MERN Stack Developer
 
 
