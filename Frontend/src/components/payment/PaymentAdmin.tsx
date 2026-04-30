@@ -183,7 +183,7 @@ const [data, setData] = useState<PaymentDataType | null>(null);  const [showPayp
                 </p>
 
                 <PayPalButtons
-                  createOrder={(dataPaypal, actions) => {
+                  createOrder={(_, actions) => {
                     if (!actions?.order) {
                       throw new Error("PayPal not initialized");
                     }
@@ -200,7 +200,7 @@ const [data, setData] = useState<PaymentDataType | null>(null);  const [showPayp
                       ],
                     });
                   }}
-                  onApprove={(dataPaypal, actions) => {
+                  onApprove={(_, actions) => {
                     if (!actions?.order) {
                       return Promise.resolve();
                     }

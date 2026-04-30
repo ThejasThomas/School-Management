@@ -23,10 +23,7 @@ const TeacherLayout = ({ children, onSelect }: any) => {
     onSelect(key);
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+ 
 
   return (
     <div className="flex h-screen bg-gray-50">

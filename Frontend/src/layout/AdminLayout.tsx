@@ -36,10 +36,10 @@ const AdminLayout = ({ children, onSelect }: any) => {
     onSelect(key);
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/admin/login");
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   navigate("/admin/login");
+  // };
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
