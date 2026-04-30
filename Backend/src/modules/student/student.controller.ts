@@ -8,6 +8,7 @@ import {
 
 export const addStudent = async (req: Request, res: Response) => {
   try {
+    console.log("datasss",req.body)
     const student = await createStudent(req.body);
 
     res.status(201).json({
@@ -21,11 +22,18 @@ export const addStudent = async (req: Request, res: Response) => {
 
 export const fetchStudents = async (req: Request, res: Response) => {
   try {
-    const students = await getStudents();
+    const { page, limit, search, classId } = req.query;
+
+    const result = await getStudents({
+      page: Number(page) || 1,
+      limit: Number(limit) || 5,
+      search: search || "",
+      classId,
+    });
 
     res.status(200).json({
       success: true,
-      data: students,
+      data: result,
     });
   } catch (error: any) {
     res.status(500).json({ message: error.message });

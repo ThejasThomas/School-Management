@@ -1,11 +1,14 @@
 import { Router } from "express";
-import { addClass, fetchClasses } from "./class.controller";
+import { fetchDashboard } from "./dashboard.controller";
 import { verifyAuth, authorizeRoles } from "../../middleware/auth.middleware";
 
 const router = Router();
 
-router.post("/",verifyAuth, addClass);
-
-router.get("/",verifyAuth,fetchClasses);
+router.get(
+  "/",
+  verifyAuth,
+  authorizeRoles("admin"),
+  fetchDashboard
+);
 
 export default router;

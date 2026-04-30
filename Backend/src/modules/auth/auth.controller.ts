@@ -20,23 +20,30 @@ export const register = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
 
     const { user, accessToken, refreshToken } = await loginUser(
       email,
       password
     );
 
+    if (role && user.role !== role) {
+      return res.status(403).json({
+        success: false,
+        message: "Access denied for this login portal",
+      });
+    }
+
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false, 
+      secure: false,
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.status(200).json({
       success: true,
-       data: {
+      data: {
         user,
         accessToken,
       },

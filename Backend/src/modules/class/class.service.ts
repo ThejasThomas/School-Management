@@ -21,3 +21,7 @@ export const createClass = async (data: {
 
   return newClass;
 };
+
+export const getClasses = async () => {
+  return await Class.find().sort({ createdAt: -1 });
+};

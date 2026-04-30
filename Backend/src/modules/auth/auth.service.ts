@@ -3,8 +3,7 @@ import jwt from "jsonwebtoken";
 import { IUser, User } from "../user/user.model";
 
 export const registerUser = async (data: Partial<IUser>) => {
-  const { name, email, password, role } = data;
-
+  const { name, email, password } = data;
   const existingUser = await User.findOne({ email });
   if (existingUser) throw new Error("User already exists");
 
@@ -14,7 +13,10 @@ export const registerUser = async (data: Partial<IUser>) => {
     name,
     email,
     password: hashedPassword,
-    role,
+
+    role: "teacher", 
+    status: "pending",     
+    isApproved: false,     
   });
 
   return user;
@@ -42,6 +44,20 @@ export const loginUser = async (email: string, password: string) => {
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new Error("Invalid credentials");
+  if(user.role!=="admin"){
+ if (!user.isApproved) {
+    throw new Error("Your account is pending admin approval");
+  }
+
+  if (user.status === "blocked") {
+    throw new Error("Your account has been blocked by admin");
+  }
+
+  if (user.status !== "active") {
+    throw new Error("Your account is not active");
+  }
+  }
+ 
 
   const accessToken = generateAccessToken(user);
   const refreshToken = generateRefreshToken(user);

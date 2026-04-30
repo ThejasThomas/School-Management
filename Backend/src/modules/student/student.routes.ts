@@ -19,7 +19,7 @@ router.post(
   addStudent,
 );
 
-router.get("/", verifyAuth, authorizeRoles("admin", "teacher"), fetchStudents);
+router.get("/", fetchStudents);
 
 router.put(
   "/:id",
