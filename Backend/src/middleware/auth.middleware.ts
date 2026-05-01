@@ -48,7 +48,6 @@ console.log("SECRET:", process.env.JWT_ACCESS_SECRET);
 };
 
 export const authorizeRoles = (...roles: ("admin" | "teacher")[]) => {
-  console.log("heyyy")
   return (req: AuthRequest, res: Response, next: NextFunction) => {
         if (!req.user) {
       return res.status(401).json({ message: "Unauthorized" });
