@@ -61,14 +61,9 @@ Frontend: Vercel
 Backend: AWS 
 Database: MongoDB Atlas
 
-
 👨‍💻 Author
-
 Thejas Thomas
 MERN Stack Developer
-
-
-
 
 ⭐ Conclusion
 

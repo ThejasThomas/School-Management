@@ -9,6 +9,7 @@ import teacherRoutes from "./modules/teacher/teacher.routes"
 import subjectRoutes from "./modules/subject/subject.routes"
 import attendanceRoutes from "./modules/attendence/attendence.routes"
 import dashboardRoutes from "./modules/dashboard/dashboard.route"
+import { errorHandler } from "./middleware/error.middleware";
 
 app.use(
   cors({
@@ -27,5 +28,7 @@ app.use("/subjects", subjectRoutes);
 app.use("/attendance", attendanceRoutes);
 app.use("/admin/dashboard", dashboardRoutes);
   
+app.use(errorHandler);
+
 
 export default app;

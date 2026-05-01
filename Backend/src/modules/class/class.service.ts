@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Class } from "./class.model";
+import { AppError } from "../../utils/AppError";
 
 export const createClass = async (data: {
   name: string;
@@ -8,7 +9,7 @@ export const createClass = async (data: {
   const existing = await Class.findOne({ name: data.name });
 
   if (existing) {
-    throw new Error("Class already exists");
+    throw new AppError("Class already exists",400);
   }
 
   const newClass = await Class.create({
